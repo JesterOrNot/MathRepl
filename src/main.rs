@@ -1,5 +1,5 @@
 use std::process::exit;
-use synterm::{CommandLineTool, gen_lexer, gen_parse};
+use synterm::{CommandLineTool, gen_lexer, gen_parse, Color};
 use mathew::Eval;
 
 struct MyTool;
@@ -25,7 +25,7 @@ impl CommandLineTool for MyTool {
     }
     fn syntax_highlight(string: &str) {
         gen_lexer!(TheLexer, (Number, "[0-9]+"), (Paren, r"[\(\)]"), (Operator, r"[\+-/\*]"));
-        gen_parse!(TheLexer, parser, (Number,"34"), (Paren,"32"), (Operator, "33"));
+        gen_parse!(TheLexer, parser, (Number,Color::Blue) (Paren, Color::Green), (Operator, Color::Yellow));
         parser(TheLexer::lexer(string));
     }
 }
