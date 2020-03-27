@@ -5,6 +5,6 @@ authors = ["Sean Hellum <seanhellum45@gmail.com>"]
 edition = "2018"
 
 [dependencies]
-synterm = "0.1.2"
+synterm = "0.1.21"
 logos = "0.9.7"
 mathew = "0.0.2"
