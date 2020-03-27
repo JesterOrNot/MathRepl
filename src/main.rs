@@ -24,7 +24,7 @@ impl CommandLineTool for MyTool {
             TheLexer,
             (Number, "[0-9]+"),
             (Paren, r"[\(\)]"),
-            (Operator, r"[\+-/\*]")
+            (Operator, r"[\+-/\*%]")
         );
         gen_parse!(
             TheLexer,
