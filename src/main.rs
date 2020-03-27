@@ -22,6 +22,7 @@ impl CommandLineTool for MyTool {
     fn syntax_highlight(string: &str) {
         gen_lexer!(
             TheLexer,
+            (KeyWord, "exit"),
             (Number, "[0-9]+"),
             (Paren, r"[\(\)]"),
             (Operator, r"[\+-/\*%]")
@@ -30,8 +31,9 @@ impl CommandLineTool for MyTool {
             TheLexer,
             parser,
             (Number, Color::Blue),
-            (Paren, Color::Green),
-            (Operator, Color::Yellow)
+            (Paren, Color::Magenta),
+            (Operator, Color::Yellow),
+            (KeyWord, Color::Red)
         );
         parser(TheLexer::lexer(string));
     }
