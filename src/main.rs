@@ -1,6 +1,6 @@
-use std::process::exit;
-use synterm::{CommandLineTool, gen_lexer, gen_parse, Color};
 use mathew::Eval;
+use std::process::exit;
+use synterm::{gen_lexer, gen_parse, Color, CommandLineTool};
 
 struct MyTool;
 
@@ -13,19 +13,26 @@ impl CommandLineTool for MyTool {
             _ => {
                 let e = Eval::default();
                 match e.eval(line) {
-                    Some(n) => {
-                        format!("{}", n)
-                    }
-                    None => {
-                        "Error".to_string()
-                    }
+                    Some(n) => format!("{}", n),
+                    None => "Error".to_string(),
                 }
             }
         }
     }
     fn syntax_highlight(string: &str) {
-        gen_lexer!(TheLexer, (Number, "[0-9]+"), (Paren, r"[\(\)]"), (Operator, r"[\+-/\*]"));
-        gen_parse!(TheLexer, parser, (Number,Color::Blue), (Paren, Color::Green), (Operator, Color::Yellow));
+        gen_lexer!(
+            TheLexer,
+            (Number, "[0-9]+"),
+            (Paren, r"[\(\)]"),
+            (Operator, r"[\+-/\*]")
+        );
+        gen_parse!(
+            TheLexer,
+            parser,
+            (Number, Color::Blue),
+            (Paren, Color::Green),
+            (Operator, Color::Yellow)
+        );
         parser(TheLexer::lexer(string));
     }
 }
