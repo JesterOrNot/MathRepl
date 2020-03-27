@@ -321,9 +321,9 @@ dependencies = [
 
 [[package]]
 name = "synterm"
-version = "0.1.121"
+version = "0.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "de27e16c131b9716d367b324c24239b6ee94f25444b3f562e89a50c5b966f430"
+checksum = "314814de8565e5c8d41bbb838120128f760aeea60627fd5cdfae65c9985b3453"
 dependencies = [
  "crossterm",
  "logos",
